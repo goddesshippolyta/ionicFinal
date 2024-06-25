@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      IONIC FINAL
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        Logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Date</ion-label>
+      <ion-input [(ngModel)]="year" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input [(ngModel)]="memberOne" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Note</ion-label>
+      <ion-input [(ngModel)]="memberTwo" type="text"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="button" (click)="addMember()" color="primary" shape="full" expand="block">Add Note</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      NOTES
+    </ion-list-header>
+    <ion-item lines="inset" *ngFor="let note of notes">
+      <ion-label>
+        <h5>{{note.year}} - ({{note.memberOne}}-{{note.memberTwo}})</h5>
+      </ion-label>
+      <div class="item-note">
+        <ion-icon name="create-outline" style="zoom:2.0;" (click)="updateMember(note.id)"></ion-icon>
+        <ion-icon name="trash" style="zoom:2.0;" (click)="deleteMember(note.id)"></ion-icon>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
